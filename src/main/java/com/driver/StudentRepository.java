@@ -29,10 +29,18 @@ public class StudentRepository {
     }
     public void deleteTeacherByName(String name){
         teacherDb.remove(name);
-        if(teacher_student.containsKey(name)) teacher_student.remove(name);
+        for(String student: teacher_student.get(name)){
+            studentDb.remove(student);
+        }
+        teacher_student.remove(name);
     }
     public void deleteAllTeachers(){
         teacherDb.clear();
+        for(List<String> students: teacher_student.values()){
+            for(String student : students){
+                studentDb.remove(student);
+            }
+        }
         teacher_student.clear();
     }
     public void addStudentTeacherPair(String student,String teacher){
