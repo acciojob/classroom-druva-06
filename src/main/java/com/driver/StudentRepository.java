@@ -44,6 +44,10 @@ public class StudentRepository {
             teacher_student_pair.add(student);
             teacher_student.put(teacher,teacher_student_pair);
         }
+        Teacher newTeacher = teacherDb.get(teacher);
+        int noOfStudents = newTeacher.getNumberOfStudents();
+        noOfStudents++;
+        newTeacher.setNumberOfStudents(noOfStudents);
     }
     public List<String> getStudentsByTeacherName(String teacher){
         if(!teacher_student.containsKey(teacher)) return new ArrayList<>();
