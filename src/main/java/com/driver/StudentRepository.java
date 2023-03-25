@@ -46,7 +46,7 @@ public class StudentRepository {
         }
         Teacher newTeacher = teacherDb.get(teacher);
         int noOfStudents = newTeacher.getNumberOfStudents();
-        noOfStudents++;
+        noOfStudents--;
         newTeacher.setNumberOfStudents(noOfStudents);
     }
     public List<String> getStudentsByTeacherName(String teacher){
